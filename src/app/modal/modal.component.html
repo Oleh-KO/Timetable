@@ -1,0 +1,14 @@
+<div class="backgroundSpace">
+  <div class="modal">
+    <form [formGroup]="itemForm">
+      <input type="text" formControlName="Topic" placeholder="Topic" required>
+      <input type="text" formControlName="Date" placeholder="Date" required>
+      <input type="text" formControlName="Lecturer" placeholder="Lecturer" required>
+    </form>
+    <p class="error" *ngIf="error">Please fill all fields</p>
+    <div class="btnGroup">
+      <button type="button" class="addToList" (click)="getItems()">Add to List</button>
+      <button type="button" class="close" (click)="closeModal()">Close</button>
+    </div>
+  </div>
+</div>

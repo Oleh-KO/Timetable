@@ -1,0 +1,63 @@
+<div class="container">
+  <main>
+    <section>
+      <div class="title">
+        <p>Add</p>
+        <p>Your</p>
+        <p>Lesson</p>
+      </div>
+      <button type="button" id="add" (click)="addItem()">Add</button>
+    </section>
+    <div>
+      <div class="line" *ngFor="let item of itemArray let i = index">
+
+        <div class="flex-block" *ngIf="!item.edit && itemArray.length">
+          <div class="item index">{{i+1}}</div>
+          <div class="item">{{item.topic}}</div>
+          <div class="item">{{item.date}}</div>
+          <div class="item">{{item.lecturer}}</div>
+        </div>
+
+        <form action="" *ngIf="item.edit" class="form" [formGroup]="editForm">
+          <div class="item index"><input type="text" value="{{i+1}}"></div>
+          <div class="item"><input type="text" formControlName="topic" value="{{item.topic}}"
+              placeholder="{{item.topic}}"></div>
+          <div class="item"><input type="text" value="{{item.date}}" formControlName="date" placeholder="{{item.date}}">
+          </div>
+          <div class="item"><input type="text" value="{{item.lecturer}}" formControlName="lecturer"
+              placeholder="{{item.lecturer}}"></div>
+        </form>
+
+        <div class="item btn-block">
+          <button type="button" class="btn edit" (click)="editItem(i)" *ngIf="!item.edit"> Edit</button>
+          <button type="button" class="btn edit" (click)="saveItem(i)" *ngIf="item.edit"> Save</button>
+          <button type="button" class="btn delete" (click)="deleteItem(i)">Delete</button>
+        </div>
+
+      </div>
+
+      <div class="text-center" *ngIf="!itemArray.length">
+        <p>NO LESSONS, NO FUN!</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="logos">
+      <div class="facebook">
+        <a href="https://www.facebook.com/profile.php?id=100008536417051"><img class="logo"
+            src="assets/images/facebook.png"></a>
+      </div>
+      <div class="github">
+        <a href="https://github.com/Oleh-KO"><img class="logo" src="assets/images/github.png"></a>
+      </div>
+    </div>
+    <div class="ok">
+      <img class="logoOK" src="assets/images/ok.svg">
+      <p>Designed and created<br>by Oleh Kosach</p>
+    </div>
+  </footer>
+</div>
+<div class="modal" *ngIf="modalWindow">
+  <app-modal></app-modal>
+</div>

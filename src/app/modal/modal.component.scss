@@ -1,0 +1,77 @@
+.modal {
+  width: 40%;
+  height: 253px;
+  background-color: #0000008a;
+  border: 2px solid #2a709c;
+  position: fixed;
+  left: 28%;
+  top: 26%;
+  z-index: 200;
+  padding: 1rem;
+}
+
+.error {
+  color: red;
+  font-family: Sifonn Basic;
+  border-bottom: 1px solid red;
+  padding: 0 0 3px 0;
+  text-align: center;
+  width: 174px;
+  margin: auto;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+input {
+  color: white;
+  font-family: Sifonn Basic;
+  font-size: 15px;
+  background-color: transparent;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-bottom: 1px solid #2a709c;
+  margin-top: 4%;
+  margin-bottom: 4%;
+}
+
+input:focus {
+  outline: none;
+}
+
+.btnGroup {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px;
+}
+
+.addToList,
+.close {
+  min-height: 30px;
+  background-color: #009dff5c;
+  border: 2px solid black;
+  text-align: center;
+  font-family: Sifonn Basic;
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 7px;
+  transition-duration: .7s;
+  transition-property: transform, background-color;
+}
+
+.addToList:hover,
+.close:hover {
+  transform: scale(1.3);
+  color: white;
+  background-color: black;
+  cursor: pointer;
+}
