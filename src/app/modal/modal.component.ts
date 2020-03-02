@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { Component, OnInit, ElementRef, ViewChild, ViewChildren } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LessonComponent } from '../lesson/lesson.component'
 
 @Component({
@@ -9,20 +9,24 @@ import { LessonComponent } from '../lesson/lesson.component'
 })
 export class ModalComponent implements OnInit {
 
+  @ViewChildren('dateInput') dateInput: HTMLElement;
+  // @ViewChild('dateInput') dateInput;
+
   addedItems = [];
   error: boolean = false;
 
   constructor(public LessonComponent: LessonComponent) { }
 
+  patternDate = "(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"
+
   itemForm = new FormGroup({
     Topic: new FormControl(''),
-    Date: new FormControl(''),
+    Date: new FormControl('', [Validators.required, Validators.pattern(this.patternDate)]),
     Lecturer: new FormControl(''),
   });
 
   getItems() {
-    if (this.itemForm.value.Topic !== "" && this.itemForm.value.Date !== "" && this.itemForm.value.Lecturer !== "") {
-
+    if (this.itemForm.value.Topic !== "" && this.itemForm.value.Date !== "" && this.itemForm.value.Lecturer !== "" && this.itemForm.valid) {
       this.error = false;
       let itemObj = {
         "topic": this.itemForm.value.Topic,

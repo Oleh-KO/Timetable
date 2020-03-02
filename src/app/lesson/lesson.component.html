@@ -6,7 +6,7 @@
         <p>Your</p>
         <p>Lesson</p>
       </div>
-      <button type="button" id="add" (click)="addItem()">Add</button>
+      <button type="button" class="add" (click)="addItem()">Add</button>
     </section>
     <div>
       <div class="line" *ngFor="let item of itemArray let i = index">
@@ -58,6 +58,7 @@
     </div>
   </footer>
 </div>
+
 <div class="modal" *ngIf="modalWindow">
   <app-modal></app-modal>
 </div>
