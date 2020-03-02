@@ -50,7 +50,6 @@ export class ModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.LessonComponent.modalWindow);
     this.addedItems = JSON.parse(localStorage.getItem("array"));
   }
 
