@@ -10,7 +10,6 @@ import { LessonComponent } from '../lesson/lesson.component'
 export class ModalComponent implements OnInit {
 
   @ViewChildren('dateInput') dateInput: HTMLElement;
-  // @ViewChild('dateInput') dateInput;
 
   addedItems = [];
   error: boolean = false;
@@ -35,6 +34,11 @@ export class ModalComponent implements OnInit {
         "edit": false
       };
 
+      console.log(itemObj, 'item');
+      console.log(this.addedItems, 'array');
+
+
+      this.addedItems = this.addedItems || [];
       this.addedItems.push(itemObj);
       localStorage.setItem("array", JSON.stringify(this.addedItems));
       this.itemForm.reset();
